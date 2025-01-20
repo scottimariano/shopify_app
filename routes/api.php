@@ -8,11 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum','ability:read,admin'])->group(function () {
-
-    
+ 
     Route::get('/products', [ProductController::class, 'index']);
     Route::get('/products/{id}', [ProductController::class, 'show']);
-
     Route::get('/products/{id}/inventory', [InventoryController::class, 'show']);
     
 });
@@ -20,15 +18,15 @@ Route::middleware(['auth:sanctum','ability:read,admin'])->group(function () {
 Route::middleware(['auth:sanctum','ability:write,admin'])->group(function () {
    
     Route::post('/products', [ProductController::class, 'store']);
+    Route::put('/products/{id}', [ProductController::class, 'update']);
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
-    
     
 });
 
 // admin
 Route::middleware(['auth:sanctum','ability:admin'])->group(function () {
 
-    Route::post('/admin/{id}/updateMail', [AdminController::class, 'updateUserEmail']);
+    Route::put('/admin/{id}/updateMail', [AdminController::class, 'updateUserEmail']);
     Route::post('/admin/{id}/toggleDailyReport', [AdminController::class, 'toogleDailyReportSuscription']);
     
 });

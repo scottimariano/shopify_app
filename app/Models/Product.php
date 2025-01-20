@@ -12,7 +12,8 @@ class Product extends Model
         'title',
         'description',
         'sku',
-        'variant_id'
+        'variant_id',
+        'shopify_id'
     ];
 
     public function orders()
