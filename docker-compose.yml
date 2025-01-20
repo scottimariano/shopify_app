@@ -1,0 +1,36 @@
+services:
+    app:
+        build: .
+        ports:
+            - "9000:80" # Port to access the application from the browser
+        volumes:
+            - .:/var/www/html # Mount local application folder to container
+        networks:
+            - app_network
+        mem_limit: "2G"
+        cpus: "1"
+        environment:
+            - VIRTUAL_HOST=localhost # Use localhost for local development
+
+    db:
+        image: mysql:8.0
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: shopify_app_db
+            MYSQL_USER: user
+            MYSQL_PASSWORD: password
+        ports:
+            - "3307:3306" # Port to access MySQL
+        volumes:
+            - db_data:/var/lib/mysql # MySQL data storage
+        networks:
+            - app_network
+        mem_limit: "2G"
+        cpus: "1"
+
+volumes:
+    db_data:
+
+networks:
+    app_network:
+        driver: bridge
