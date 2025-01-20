@@ -15,6 +15,7 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+000-default.conf
 /auth.json
 /.fleet
 /.idea

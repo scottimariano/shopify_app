@@ -47,7 +47,7 @@ class GenerateProductsReportJob implements ShouldQueue
         }
 
         $handle = fopen($this->filePath, 'w');
-        fputcsv($handle, ['ID', 'Nombre', 'Descripción', 'Precio']);
+        fputcsv($handle, ['ID', 'Title', 'Description', 'Price']);
 
         foreach ($products as $product) {
             fputcsv($handle, [

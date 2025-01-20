@@ -18,7 +18,6 @@ class ProductController extends Controller
         $shopify = app(ShopifySDK::class);
     
         $products = Cache::remember('shopify_products_index', 20, function () use ($shopify) {
-            var_dump('query');
             return $shopify->Product->get();
         });
     
