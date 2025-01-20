@@ -1,66 +1,18 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Dockerized development environment with separate services for Redis and MySQL, providing an isolated and consistent development setup.
+- Console Command to Create API Tokens for Users: A command line tool that generates API tokens for users, allowing access based on defined roles.
+- API Token with Roles: Implemented API tokens with specific roles to manage access control. Admin roles are allowed to create tokens and update users.
+- Admin Role: The admin role can create API tokens and modify user information. This is controlled using middleware and permissions.
+- API Routes with Middleware: Secured API routes with middleware, ensuring proper authentication and authorization for every request.
+- Controllers and Models Based on Business Needs: Controllers and models are designed to fit the requirements of the business logic.
+- External API Connection with Shopify: Integrated with Shopify’s API to manage products, orders, and handle webhook events.
+- External API Request Cache with Redis: Optimized API requests to Shopify with Redis cache, reducing load times and minimizing unnecessary requests.
+- Request Forms, Validations, and Error Messages: Implemented forms with proper validations and custom error messages to guide the user experience.
+- CRUD Operations for Models: Created basic CRUD operations to interact with the database, allowing full management of entities like products.
+- Database Migrations for Table Creations and Updates: Used Laravel migrations to create and modify tables as the application evolves.
+- Shopify Webhook Implementation with Asynchronous Jobs: Implemented Shopify webhooks to handle events asynchronously, leveraging Laravel’s job system for background processing.
+- Webhook Signature Validation through HMAC Header: Ensured the integrity and authenticity of incoming webhooks by validating the HMAC signature.
+- ngrok Tunnel to Test Webhooks Locally: Used ngrok to expose the local environment for testing webhooks during development.
+- Scheduled Jobs for Daily Report Generation with File Storage and Email Sending: Set up scheduled jobs to generate reports and email them to users on subscription database, saving files to the storage system.
+- Emails Created with Blade Templates
+- Model Relations Based on Business Logic: Established model relationships according to the application’s data flow and business logic. (Order - Products)
+- Queue Jobs: Implemented Laravel’s queue system to process jobs in the background, ensuring optimal performance and responsiveness.
