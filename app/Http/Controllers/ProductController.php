@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProductRequest;
 use Illuminate\Http\Request;
 use PHPShopify\ShopifySDK;
+use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
@@ -15,8 +16,12 @@ class ProductController extends Controller
     {
         
         $shopify = app(ShopifySDK::class);
-        $products = $shopify->Product->get();
-        
+    
+        $products = Cache::remember('shopify_products_index', 20, function () use ($shopify) {
+            var_dump('query');
+            return $shopify->Product->get();
+        });
+    
         return $products;
     }
 

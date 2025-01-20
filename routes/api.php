@@ -3,16 +3,11 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShopifyWebhookController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
-
-
-
-Route::middleware(['auth:sanctum','ability:read'])->group(function () {
+Route::middleware(['auth:sanctum','ability:read,admin'])->group(function () {
 
     
     Route::get('/products', [ProductController::class, 'index']);
@@ -22,7 +17,7 @@ Route::middleware(['auth:sanctum','ability:read'])->group(function () {
     
 });
 
-Route::middleware(['auth:sanctum','ability:write'])->group(function () {
+Route::middleware(['auth:sanctum','ability:write,admin'])->group(function () {
    
     Route::post('/products', [ProductController::class, 'store']);
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
@@ -33,11 +28,9 @@ Route::middleware(['auth:sanctum','ability:write'])->group(function () {
 // admin
 Route::middleware(['auth:sanctum','ability:admin'])->group(function () {
 
-    Route::get('/user', function (Request $request) {
-        return $request->user();
-    });
-    
     Route::post('/admin/{id}/updateMail', [AdminController::class, 'updateUserEmail']);
     Route::post('/admin/{id}/toggleDailyReport', [AdminController::class, 'toogleDailyReportSuscription']);
     
 });
+
+Route::post('/webhooks/shopify/createorder', [ShopifyWebhookController::class, 'createOrder']);
