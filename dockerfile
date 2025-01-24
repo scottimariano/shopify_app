@@ -36,7 +36,7 @@ RUN chown -R www-data:www-data /var/www/html
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-RUN echo "* * * * * cd /var/www/html && /usr/local/bin/php /var/www/html/artisan schedule:run >> /dev/null 2>&1" > /etc/cron.d/laravel-schedule
+RUN echo "* * * * * cd /var/www/html && /usr/local/bin/php /var/www/html/artisan schedule:run >> /dev/null 2>&1"
 RUN chmod 0644 /etc/cron.d/laravel-schedule
 RUN crontab /etc/cron.d/laravel-schedule
 
